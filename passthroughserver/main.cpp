@@ -66,6 +66,10 @@ QSharedPointer<MInputContextConnection> createConnection(const MImServerConnecti
 
 int main(int argc, char **argv)
 {
+    // Silence debug/info output; keep warnings and errors visible.
+    // MALIIT_DEBUG=1 re-enables debug for the org.maliit.framework category.
+    setenv("QT_LOGGING_RULES", "*.debug=false;*.info=false", 1);
+
     // compatibility with MALIIT_DEBUG
     defaultLoggingFilter = QLoggingCategory::installFilter(loggingCategoryFilter);
 
